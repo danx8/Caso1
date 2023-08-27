@@ -1,9 +1,12 @@
 package Caso_1;
 
+import java.util.Queue;
+
 public class Bodega {
 
     private int capacidad;
     private int ocupado; 
+    private Queue<Productores> productos;
 
 
     public   Bodega(int capacidad){
@@ -11,7 +14,7 @@ public class Bodega {
         this.ocupado = 0;
     }
 
-    public synchronized void almacenarProducto() throws InterruptedException {
+    public synchronized void almacenarProducto(Productores producto) throws InterruptedException {
         while (ocupado >=capacidad) {
             wait();
         }
@@ -21,6 +24,13 @@ public class Bodega {
     public synchronized void despacharProducto() {
         ocupado--;
         notifyAll();
+    }
+
+    public synchronized Productores tomarProducto() {
+        if (!productos.isEmpty()) {
+            return productos.poll();
+        }
+        return null;
     }
 
 
