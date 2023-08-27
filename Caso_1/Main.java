@@ -1,6 +1,6 @@
 package Caso_1;
 import java.util.Scanner;
-import java.util.concurrent.CyclicBarrier;
+
 
 
 public class Main {
@@ -41,13 +41,6 @@ public class Main {
             repartidores[i] = new Repartidores(i);
             repartidores[i].start();
           }
-
-        
-
-
-
-
-        
 
         
     }

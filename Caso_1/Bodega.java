@@ -3,7 +3,7 @@ package Caso_1;
 import java.util.Queue;
 
 public class Bodega {
-
+    //referencia a la clase buffer o al buffer->clase bodega
     private int capacidad;
     private int ocupado; 
     private Queue<Productores> productos;
