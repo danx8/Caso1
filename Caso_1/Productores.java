@@ -1,9 +1,10 @@
 package Caso_1;
 public class Productores extends Thread {
-
+    
     private Bodega bodega;
 
-    public Productores(int i) {
+    public Productores(int i, Bodega bodega) {
+        this.bodega = bodega;
     }
 
     public Productores() {
