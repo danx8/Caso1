@@ -1,3 +1,4 @@
+package Caso_1;
 
 public class Bodega {
 

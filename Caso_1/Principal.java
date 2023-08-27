@@ -1,3 +1,4 @@
+package Caso_1;
 import java.util.Scanner;
 import java.util.concurrent.CyclicBarrier;
 
