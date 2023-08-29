@@ -12,7 +12,7 @@ public class Productores extends Thread {
     public Productores() {
     }
 
-    Productores producto = new Productores();
+    
 
     @Override
     public synchronized void run() {
@@ -22,6 +22,8 @@ public class Productores extends Thread {
                 
                 
                 System.out.println("Productor ha creado un producto "+ id);
+
+                Productores producto = new Productores();
                 
                 bodega.almacenarProducto(producto);
                 System.out.println("Almaceno");
