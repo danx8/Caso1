@@ -19,6 +19,7 @@ public class Bodega {
             wait();
         }
         ocupado++;
+        System.out.println("Se agregó uno a la bodega");
     }
 
     public synchronized void despacharProducto() {

@@ -2,24 +2,29 @@ package Caso_1;
 public class Productores extends Thread {
     
     private Bodega bodega;
+    private int id;
 
     public Productores(int i, Bodega bodega) {
         this.bodega = bodega;
+        this.id = i;
     }
 
     public Productores() {
     }
 
+    Productores producto = new Productores();
+
     @Override
-    public void run() {
+    public synchronized void run() {
         while (!isInterrupted()) {
             try {
                 // Crear producto
                 
-                Productores producto = new Productores();
-                System.out.println("Productor ha creado un producto.");
+                
+                System.out.println("Productor ha creado un producto "+ id);
                 
                 bodega.almacenarProducto(producto);
+                System.out.println("Almaceno");
     
                 Thread.sleep(1000); 
 
