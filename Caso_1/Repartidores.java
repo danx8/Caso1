@@ -9,7 +9,10 @@ public class Repartidores  extends Thread{
     private Bodega bodega;
     private CyclicBarrier cyclicBarrier;
 
-   public Repartidores(int i) {
+   public Repartidores(int i,Bodega bodega) {
+    this.bodega = bodega;
+    
+
     }
 
 

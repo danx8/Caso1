@@ -24,6 +24,17 @@ public class Main {
         System.out.println("Ingrese la cantidad de productores: ");
         numProductores = Integer.parseInt(sc1.nextLine());
 
+        Scanner sc2 = new Scanner(System.in);
+        System.out.println("Ingrese la cantidad de repartidores: ");
+        numRepartidores = Integer.parseInt(sc2.nextLine());
+
+         Repartidores[] repartidores = new Repartidores[numRepartidores];
+
+          for(int i = 0; i <numRepartidores; i++){
+            repartidores[i] = new Repartidores(i,bodega);
+            repartidores[i].start();
+          }
+
         Productores[] productores = new Productores[numProductores];
 
         for (int i = 0; i < numProductores; i++) {
@@ -31,16 +42,16 @@ public class Main {
             productores[i].start();
         }
 
-        Scanner sc2 = new Scanner(System.in);
-        System.out.println("Ingrese la cantidad de repartidores: ");
-        numRepartidores = Integer.parseInt(sc2.nextLine());
+        // Scanner sc2 = new Scanner(System.in);
+        // System.out.println("Ingrese la cantidad de repartidores: ");
+        // numRepartidores = Integer.parseInt(sc2.nextLine());
 
-        Repartidores[] repartidores = new Repartidores[numRepartidores];
+        // Repartidores[] repartidores = new Repartidores[numRepartidores];
 
-          for(int i = 0; i <numRepartidores; i++){
-            repartidores[i] = new Repartidores(i);
-            repartidores[i].start();
-          }
+        //   for(int i = 0; i <numRepartidores; i++){
+        //     repartidores[i] = new Repartidores(i,bodega);
+        //     repartidores[i].start();
+        //   }
 
         
     }
