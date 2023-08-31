@@ -1,37 +1,32 @@
 package Caso_1;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Bodega {
-    //referencia a la clase buffer o al buffer->clase bodega
     private int capacidad;
-    private int ocupado; 
-    private Queue<Productores> productos;
+    private Queue<Producto> productos;
 
-
-    public   Bodega(int capacidad){
+    public Bodega(int capacidad) {
         this.capacidad = capacidad;
-        this.ocupado = 0;
+        this.productos = new LinkedList<>();
     }
 
-    public synchronized void almacenarProducto(Productores producto) throws InterruptedException {
-        while (ocupado >=capacidad) {
+    public synchronized void almacenarProducto(Producto producto) throws InterruptedException {
+        while (productos.size() >= capacidad) {
             wait();
         }
-        ocupado++;
-        System.out.println("Se agregó uno a la bodega");
-    }
-
-    public synchronized void despacharProducto() {
-        ocupado--;
+        productos.offer(producto);
+        System.out.println("Se agrego un producto a la bodega: ");
         notifyAll();
     }
 
-    public synchronized Productores tomarProducto() {
-        if (!productos.isEmpty()) {
-            return productos.poll();
+    public synchronized Producto tomarProducto() throws InterruptedException {
+        while (productos.isEmpty()) {
+            wait();
         }
-        return null;
+        Producto producto = productos.poll();
+        notifyAll();
+        return producto;
     }
-    
 }
