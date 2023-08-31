@@ -20,6 +20,7 @@ public class Buffer {
         }
         productos.offer(producto);
         System.out.println("Despachador ha colocado el producto " + producto.getId() + " en el buffer.");
+
         notifyAll();
     }
 
