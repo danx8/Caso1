@@ -17,7 +17,6 @@ public class Bodega {
             wait();
         }
         productos.offer(producto);
-        System.out.println("Se agrego un producto a la bodega: ");
         notifyAll();
     }
 

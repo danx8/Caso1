@@ -17,7 +17,6 @@ public class Despachador extends Thread {
 
                 if (producto != null) {
                     buffer.colocarProducto(producto);
-                    System.out.println("Despachador ha puesto el producto " + producto.getId() + " en el buffer.");
                 } else {
                     realizarTareaAdicional();
                 }
