@@ -19,20 +19,18 @@ public class Buffer {
             wait();
         }
         productos.offer(producto);
+        buffer.offer(producto);
         System.out.println("Despachador ha colocado el producto " + producto.getId() + " en el buffer.");
 
         notifyAll();
     }
 
-    
-
-
     public synchronized Producto tomarProducto() throws InterruptedException {
         while (buffer.isEmpty()) {
-            System.out.println("Repartidor esperando por un producto en el buffer...");
             wait();
         }
         Producto producto = buffer.poll();
+        productos.poll();
         System.out.println("Repartidor ha tomado el producto " + producto.getId() + " del buffer.");
         notifyAll();
         return producto;

@@ -25,13 +25,15 @@ class Productor extends Thread {
                 producto.esperarEntrega(); // Esperar a que el repartidor entregue el producto
                 System.out.println("Productor ha recibido la entrega del producto " + producto.getId());
 
-            } catch (InterruptedException e) {
-                interrupt();
+            } catch (Throwable e) {
+                System.out.println("Productor ha sido interrumpido.");
+                e.printStackTrace();
             }
         }
     }
 
     private Producto producirProducto(){
+        productosProducidos++;
         return new Producto();
     }
 }

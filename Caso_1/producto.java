@@ -24,6 +24,7 @@ public class Producto {
     }
 
     public synchronized void esperarEntrega() throws InterruptedException {
+        System.out.println("Productor está esperando la entrega del producto " + id);
         while (!entregado) {
             wait();
         }
