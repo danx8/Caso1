@@ -1,6 +1,6 @@
 package Caso_1;
 
-public class Producto {
+ class Producto {
     private int id;
     private static int nextId = 1;
     private boolean entregado;

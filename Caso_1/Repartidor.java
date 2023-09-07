@@ -11,23 +11,24 @@ public class Repartidor extends Thread {
 
     @Override
     public void run() {
-        while (!isInterrupted()) {
+        boolean seguir = true;
+        while (seguir) {
             try {
-                // Tomar un producto del buffer
+        
                 Producto producto = buffer.tomarProducto();
 
-                // Realizar la entrega del producto
+        
                 int tiempoEntrega = generarTiempoEntrega();
                 Thread.sleep(tiempoEntrega);
 
                 System.out.println("Repartidor ha entregado el producto " + producto.getId());
 
-               // Devolver el producto al productor
-               producto.entregarProductoAlProductor();
+       
+            producto.entregarProductoAlProductor();
 
             } catch (InterruptedException e) {
-                interrupt();
-            }
+                seguir = false;
+            }   
         }
     }
 

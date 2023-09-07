@@ -11,21 +11,22 @@ public class Despachador extends Thread {
 
     @Override
     public void run() {
-        while (!isInterrupted()) {
+        boolean seguir = true;
+        while (seguir) {
             try {
-                Producto producto = bodega.tomarProducto();
+            Producto producto = bodega.tomarProducto();
 
-                if (producto != null) {
-                    buffer.colocarProducto(producto);
-                } else {
-                    realizarTareaAdicional();
-                }
-
-            } catch (InterruptedException e) {
-                interrupt();
+            if (producto != null) {
+                buffer.colocarProducto(producto);
+            } else {
+                realizarTareaAdicional();
             }
+
+        } catch (InterruptedException e) {
+            seguir = false;
         }
     }
+  }
 
     private void realizarTareaAdicional() {
         System.out.println("Despachador está realizando una tarea adicional.");
