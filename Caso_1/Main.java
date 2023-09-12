@@ -9,20 +9,34 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese la cantidad de productores: ");
-        int numProductores = scanner.nextInt();
-
-        System.out.print("Ingrese la cantidad de repartidores: ");
-        int numRepartidores = scanner.nextInt();
-
-        System.out.print("Ingrese la capacidad de la bodega: ");
-        int capacidadBodega = scanner.nextInt();
-
-        System.out.print("Ingrese la cantidad de productos: ");
-        int numProductos = scanner.nextInt();
+        int numProductores = 0;
+        int numRepartidores = 0;
+        int capacidadBodega = 0;
+        int numProductos = 0;
         int capacidadBuffer = 1;
 
+        boolean procesoValido = true;
+        while (procesoValido){
+        procesoValido = !procesoValido;
+
+            System.out.print("Ingrese la cantidad de productores: ");
+            numProductores = scanner.nextInt();
+
+            System.out.print("Ingrese la cantidad de repartidores: ");
+            numRepartidores = scanner.nextInt();
+
+            System.out.print("Ingrese la capacidad de la bodega: ");
+            capacidadBodega = scanner.nextInt();
+
+            System.out.print("Ingrese la cantidad de productos: ");
+            numProductos = scanner.nextInt();
+
+            if ((numProductores <= 0) || ( numRepartidores <= 0)|| (capacidadBodega <= 0)){
+                procesoValido = true;
+                System.out.println( "\n No es posible llevar a cabo el proceso debido a que uno de los elementos seleccionados para (productores, repartidores o productos) tiene un valor igual o menor a cero.");
+                System.out.println("\n Seleccione nuevamente los valores");
+            }
+        }
         Bodega bodega = new Bodega(capacidadBodega);
         Buffer buffer = new Buffer(capacidadBuffer);
         Despachador despachador = new Despachador(bodega, buffer);
