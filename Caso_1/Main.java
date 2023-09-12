@@ -15,6 +15,7 @@ public class Main {
         int numProductos = 0;
         int capacidadBuffer = 1;
 
+        
         boolean procesoValido = true;
         while (procesoValido){
         procesoValido = !procesoValido;
